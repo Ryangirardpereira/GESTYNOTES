@@ -30,8 +30,11 @@ Lancer l'environement :
 source venv/bin/activate
 ```
 
-Lancer l'ineterface : 
+Lancer l'interface : 
 ```sh
 python -m src.main
 ```
 
+## Conclusions sur le projets :
+
+Il manque encore plusieurs fonctionnalités à cette application, mais j'ai vraiment aimé travailler dessus. Je pense continuer à la développer après le cours.
