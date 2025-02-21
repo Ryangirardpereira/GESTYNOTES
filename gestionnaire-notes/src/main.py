@@ -32,8 +32,12 @@ def main():
     delete_parser = subparsers.add_parser("delete", help="Supprimer une note")
     delete_parser.add_argument("titre", help="Titre de la note")
 
+    search_parser = subparsers.add_parser("search", help="Rechercher une note")
+    search_parser.add_argument("query", help="Terme à rechercher")
+
     args = parser.parse_args()
     manager = NoteManager()
+    search_engine = NoteSearchEngine()
 
     if args.command == "create":
         note = manager.creer_note(args.titre, args.contenu, args.categorie, args.tags)
@@ -41,6 +45,14 @@ def main():
     elif args.command == "delete":
         manager.supprimer_note(args.titre)
         print(f"Note '{args.titre}' supprimée avec succès.")
+    elif args.command == "search":
+        resultats = search_engine.rechercher_notes(args.query)
+        if resultats:
+            print("Notes trouvées:")
+            for note in resultats:
+                print(f"- {note}")
+        else:
+            print("Aucune note ne correspond à la recherche.")
     else:
         parser.print_help()
 
